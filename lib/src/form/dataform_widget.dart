@@ -173,7 +173,8 @@ class _DataFormBase extends InheritedWidget {
     return result!;
   }
 
-  // coverage:ignore-line
+  // coverage:ignore-start
   @override
   bool updateShouldNotify(_DataFormBase oldWidget) => false;
+  // coverage:ignore-end
 }
