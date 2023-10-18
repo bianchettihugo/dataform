@@ -1,6 +1,10 @@
 name: dataform
-description: A Flutter package to fetch data from a form as a Map.
-version: 1.0.0
+description: >-
+  A Flutter package to fetch data from a form as a Map.
+  With this package, you don't need to manage a lot of text controllers in a form anymore! 
+  Simply call a function when the users tap the button at the end of your form and get all 
+  the data in a Map, ready to be transformed into JSON and sent to an API!
+version: 1.0.1
 homepage: https://github.com/bianchettihugo/dataform
 
 environment:
