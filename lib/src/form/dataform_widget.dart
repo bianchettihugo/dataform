@@ -13,7 +13,7 @@ import 'package:flutter/material.dart';
 /// control the data from outside the widget tree.
 class DataForm extends StatefulWidget {
   /// The builder function that should be called when the form is submitted.
-  final List<Widget> Function(
+  final Widget Function(
     BuildContext context,
   ) builder;
 
@@ -145,8 +145,10 @@ class DataFormState extends State<DataForm> {
       key: _formKey,
       child: _DataFormBase(
         formState: this,
-        child: Column(
-          children: widget.builder(context),
+        child: Builder(
+          builder: (context) {
+            return widget.builder(context);
+          },
         ),
       ),
     );
@@ -171,6 +173,7 @@ class _DataFormBase extends InheritedWidget {
     return result!;
   }
 
+  // coverage:ignore-line
   @override
   bool updateShouldNotify(_DataFormBase oldWidget) => false;
 }

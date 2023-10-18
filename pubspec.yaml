@@ -1,5 +1,5 @@
 name: dataform
-description: A Flutter plugin to fetch data from a form as a Map.
+description: A Flutter package to fetch data from a form as a Map.
 version: 1.0.0
 homepage:
 

@@ -51,6 +51,9 @@ class DataFormField<T> extends StatelessWidget {
   /// An optional function that will be called to validate the value.
   final String? Function(T?)? validator;
 
+  /// Optional callback that formats the text to be saved in the map.
+  final dynamic Function(T)? formatter;
+
   /// Creates a [DataFormField] widget.
   const DataFormField({
     required this.id,
@@ -58,6 +61,7 @@ class DataFormField<T> extends StatelessWidget {
     required this.child,
     this.validator,
     this.conditional,
+    this.formatter,
     super.key,
   });
 
@@ -69,7 +73,7 @@ class DataFormField<T> extends StatelessWidget {
         final dataForm = DataFormState.maybeOf(context);
         dataForm?.saveField(
           id: id,
-          value: value,
+          value: formatter?.call(value) ?? value,
           conditional: conditional,
         );
       },
