@@ -1,7 +1,7 @@
 import 'package:dataform/src/form/dataform_widget.dart';
 import 'package:flutter/material.dart';
 
-/// Specifies the position of the checkbox in the [DataformCheckbox] widget
+/// Specifies the position of the checkbox in the [DataFormCheckbox] widget
 enum CheckboxPosition {
   /// The checkbox is on the left side of the content
   left,
@@ -14,7 +14,7 @@ enum CheckboxPosition {
 ///
 /// Can be used inside a [DataForm] widget and have an id to save the value
 /// on a data map
-class DataformCheckbox extends StatefulWidget {
+class DataFormCheckbox extends StatefulWidget {
   /// The text to display
   final String text;
 
@@ -63,7 +63,7 @@ class DataformCheckbox extends StatefulWidget {
   final CheckboxPosition checkboxPosition;
 
   /// Creates a new switch option
-  const DataformCheckbox({
+  const DataFormCheckbox({
     required this.text,
     this.description,
     this.style,
@@ -83,10 +83,10 @@ class DataformCheckbox extends StatefulWidget {
   });
 
   @override
-  State<DataformCheckbox> createState() => _DataformCheckboxState();
+  State<DataFormCheckbox> createState() => _DataFormCheckboxState();
 }
 
-class _DataformCheckboxState extends State<DataformCheckbox> {
+class _DataFormCheckboxState extends State<DataFormCheckbox> {
   late bool active;
 
   @override

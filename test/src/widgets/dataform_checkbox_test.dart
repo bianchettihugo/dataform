@@ -8,10 +8,10 @@ import '../../test_utils.dart';
 void main() {
   testWidgets('dataform checkbox test', (tester) async {
     await tester.pumpWidgetWithApp(
-      const DataformCheckbox(text: 'text'),
+      const DataFormCheckbox(text: 'text'),
     );
 
-    expect(find.byType(DataformCheckbox), findsOneWidget);
+    expect(find.byType(DataFormCheckbox), findsOneWidget);
     expect(find.byType(Checkbox), findsOneWidget);
   });
 
@@ -20,7 +20,7 @@ void main() {
       DataForm(
         builder: (context) => Column(
           children: [
-            const DataformCheckbox(
+            const DataFormCheckbox(
               text: 'text',
               checkboxPosition: CheckboxPosition.left,
             ),
@@ -38,7 +38,7 @@ void main() {
     await tester.tap(find.text('text'));
     await tester.pump();
 
-    expect(find.byType(DataformCheckbox), findsOneWidget);
+    expect(find.byType(DataFormCheckbox), findsOneWidget);
     expect(find.byType(Checkbox), findsOneWidget);
   });
 
@@ -47,7 +47,7 @@ void main() {
       DataForm(
         builder: (context) => Column(
           children: [
-            DataformCheckbox(
+            DataFormCheckbox(
               text: 'text',
               conditional: () async => true,
               description: 'test description',
@@ -71,7 +71,7 @@ void main() {
     await tester.tap(find.text('press'));
     await tester.pump();
 
-    expect(find.byType(DataformCheckbox), findsOneWidget);
+    expect(find.byType(DataFormCheckbox), findsOneWidget);
     expect(find.byType(Checkbox), findsOneWidget);
   });
 }

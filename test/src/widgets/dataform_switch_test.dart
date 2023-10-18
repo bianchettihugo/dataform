@@ -8,10 +8,10 @@ import '../../test_utils.dart';
 void main() {
   testWidgets('dataform switch test', (tester) async {
     await tester.pumpWidgetWithApp(
-      const DataformSwitch(text: 'text'),
+      const DataFormSwitch(text: 'text'),
     );
 
-    expect(find.byType(DataformSwitch), findsOneWidget);
+    expect(find.byType(DataFormSwitch), findsOneWidget);
     expect(find.byType(Switch), findsOneWidget);
   });
 
@@ -20,7 +20,7 @@ void main() {
       DataForm(
         builder: (context) => Column(
           children: [
-            const DataformSwitch(
+            const DataFormSwitch(
               text: 'text',
               switchPosition: SwitchPosition.left,
             ),
@@ -38,7 +38,7 @@ void main() {
     await tester.tap(find.text('text'));
     await tester.pump();
 
-    expect(find.byType(DataformSwitch), findsOneWidget);
+    expect(find.byType(DataFormSwitch), findsOneWidget);
     expect(find.byType(Switch), findsOneWidget);
   });
 
@@ -47,7 +47,7 @@ void main() {
       DataForm(
         builder: (context) => Column(
           children: [
-            DataformSwitch(
+            DataFormSwitch(
               text: 'text',
               conditional: () async => true,
               description: 'test description',
@@ -71,7 +71,7 @@ void main() {
     await tester.tap(find.text('press'));
     await tester.pump();
 
-    expect(find.byType(DataformSwitch), findsOneWidget);
+    expect(find.byType(DataFormSwitch), findsOneWidget);
     expect(find.byType(Switch), findsOneWidget);
   });
 }

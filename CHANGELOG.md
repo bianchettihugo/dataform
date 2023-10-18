@@ -1,3 +1,7 @@
+## 1.0.3
+
+Change switch and checkbox names
+
 ## 1.0.2
 
 Change package description
