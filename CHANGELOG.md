@@ -1,3 +1,7 @@
+## 1.0.2
+
+Change package description
+
 ## 1.0.1
 
 Add detailed package description

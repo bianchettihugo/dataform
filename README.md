@@ -155,5 +155,5 @@ Add the following line to `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  dataform: ^1.0.1
+  dataform: ^1.0.2
 ```
