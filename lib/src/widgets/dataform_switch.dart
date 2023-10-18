@@ -128,7 +128,7 @@ class _DataformSwitchState extends State<DataformSwitch> {
         final dataForm = DataFormState.maybeOf(context);
         dataForm?.saveField(
           id: widget.id,
-          value: value ?? false,
+          value: active,
         );
       },
       builder: (state) => SizedBox(

@@ -111,6 +111,8 @@ class DataFormTextField<T> extends StatelessWidget {
     this.restorationId,
     this.contextMenuBuilder,
     this.formatter,
+    this.onError,
+    this.validate,
   });
 
   /// The id of the field that will be used to identify it in the [Map].
@@ -574,6 +576,52 @@ class DataFormTextField<T> extends StatelessWidget {
   /// Optional callback that formats the text to be saved in the map.
   final T Function(String?)? formatter;
 
+  /// Function that will be called when the text field has errors.
+  final Function(String error)? onError;
+
+  /// You can optionally pass a validate function that returns a map
+  /// where the keys are conditions and the values are error strings
+  /// that will be displayed if the condition is false. Example:
+  ///
+  /// value must not be null otherwise display 'Value cannot be null!'
+  ///
+  /// int.tryParse(value) must return a number no null
+  /// otherwise display 'Value must be a number!'
+  ///
+  /// ```dart
+  /// validate: (value) => {
+  ///   value != null: 'Value cannot be null!',
+  ///   int.tryParse(value ?? '') != null: 'Value must be a number!',
+  /// }
+  /// ```
+  ///
+  final Map<bool, String> Function(String?)? validate;
+
+  String? _validator(String? str) {
+    if (validate != null) {
+      return _validate(str, validate!(str));
+    }
+    if (validator == null) return null;
+    final result = validator!(str);
+    if (result != null) onError?.call(result);
+
+    return result;
+  }
+
+  String? _validate(String? text, Map<bool, String> validations) {
+    String? result;
+    if (text == null) return null;
+
+    validations.forEach((condition, error) {
+      if (!condition) {
+        result = error;
+      }
+    });
+
+    if (result != null) onError?.call(result!);
+    return result;
+  }
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -617,7 +665,7 @@ class DataFormTextField<T> extends StatelessWidget {
       onTapOutside: onTapOutside,
       onEditingComplete: onEditingComplete,
       onFieldSubmitted: onFieldSubmitted,
-      validator: validator,
+      validator: _validator,
       inputFormatters: inputFormatters,
       enabled: enabled,
       cursorWidth: cursorWidth,

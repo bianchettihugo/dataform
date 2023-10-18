@@ -116,7 +116,7 @@ class _DataformCheckboxState extends State<DataformCheckbox> {
         final dataForm = DataFormState.maybeOf(context);
         dataForm?.saveField(
           id: widget.id,
-          value: value ?? false,
+          value: active,
         );
       },
       builder: (state) => Checkbox(

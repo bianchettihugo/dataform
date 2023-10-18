@@ -1,7 +1,7 @@
 library dataform;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'src/form/dataform_field.dart';
+export 'src/form/dataform_widget.dart';
+export 'src/widgets/dataform_checkbox.dart';
+export 'src/widgets/dataform_switch.dart';
+export 'src/widgets/dataform_text_field.dart';
