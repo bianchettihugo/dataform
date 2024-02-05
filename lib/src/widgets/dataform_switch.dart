@@ -153,7 +153,6 @@ class _DataFormSwitchState extends State<DataFormSwitch> {
   Widget build(BuildContext context) {
     return Theme(
       data: Theme.of(context).copyWith(
-        useMaterial3: widget.useMaterial3,
         colorScheme: widget.colorScheme,
       ),
       child: InkWell(
