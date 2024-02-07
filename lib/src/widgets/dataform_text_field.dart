@@ -597,7 +597,10 @@ class DataFormTextField<T> extends StatelessWidget {
   ///
   final Map<bool, String> Function(String?)? validate;
 
-  String? _validator(String? str) {
+  String? _validator(String? str, BuildContext context) {
+    final dataForm = DataFormState.maybeOf(context);
+    if (dataForm != null && !dataForm.checkFieldId(id)) return null;
+
     if (validate != null) {
       return _validate(str, validate!(str));
     }
@@ -665,7 +668,7 @@ class DataFormTextField<T> extends StatelessWidget {
       onTapOutside: onTapOutside,
       onEditingComplete: onEditingComplete,
       onFieldSubmitted: onFieldSubmitted,
-      validator: _validator,
+      validator: (str) => _validator(str, context),
       inputFormatters: inputFormatters,
       enabled: enabled,
       cursorWidth: cursorWidth,
