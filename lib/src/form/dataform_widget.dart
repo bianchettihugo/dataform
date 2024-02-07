@@ -73,7 +73,6 @@ class DataFormState extends State<DataForm> {
   /// otherwise returns null.
   Map<String, dynamic>? validateFields(List<String> ids) {
     _validationFieldsId = ids;
-    if (widget.resetData) _data.clear();
     if (_formKey.currentState?.validate() ?? false) {
       _formKey.currentState?.save();
       return _data;
