@@ -71,6 +71,18 @@ class DataFormSwitch extends StatefulWidget {
   /// The position of the switch
   final SwitchPosition switchPosition;
 
+  /// The height of the switch
+  final double? height;
+
+  /// The width of the switch
+  final double? width;
+
+  /// The padding of the content
+  final EdgeInsets? contentPadding;
+
+  /// The splash radius of the switch item
+  final double? splashRadius;
+
   /// Creates a new switch option
   const DataFormSwitch({
     required this.text,
@@ -90,7 +102,11 @@ class DataFormSwitch extends StatefulWidget {
     this.thumbIcon,
     this.trackColor,
     this.thumbColor,
+    this.height,
+    this.width,
+    this.contentPadding,
     this.switchPosition = SwitchPosition.right,
+    this.splashRadius,
     super.key,
   });
 
@@ -132,8 +148,8 @@ class _DataFormSwitchState extends State<DataFormSwitch> {
         );
       },
       builder: (state) => SizedBox(
-        width: 52,
-        height: 42,
+        height: widget.height,
+        width: widget.width,
         child: FittedBox(
           fit: BoxFit.fill,
           child: Switch(
@@ -157,11 +173,17 @@ class _DataFormSwitchState extends State<DataFormSwitch> {
       ),
       child: InkWell(
         onTap: _onChange,
-        child: Container(
-          padding: EdgeInsets.symmetric(
-            horizontal: widget.background ? 12 : 0,
-            vertical: 8,
-          ),
+        customBorder: widget.splashRadius != null
+            ? RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              )
+            : null,
+        child: Ink(
+          padding: widget.contentPadding ??
+              EdgeInsets.symmetric(
+                horizontal: widget.background ? 12 : 0,
+                vertical: 8,
+              ),
           decoration: widget.decoration,
           child: Row(
             children: [
