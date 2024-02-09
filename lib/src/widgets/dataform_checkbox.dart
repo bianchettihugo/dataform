@@ -62,6 +62,12 @@ class DataFormCheckbox extends StatefulWidget {
   /// The position of the checkbox
   final CheckboxPosition checkboxPosition;
 
+  /// The padding of the content
+  final EdgeInsets? contentPadding;
+
+  /// The splash radius of the switch item
+  final double? splashRadius;
+
   /// Creates a new switch option
   const DataFormCheckbox({
     required this.text,
@@ -79,6 +85,8 @@ class DataFormCheckbox extends StatefulWidget {
     this.colorScheme,
     this.decoration,
     this.checkboxPosition = CheckboxPosition.right,
+    this.contentPadding,
+    this.splashRadius,
     super.key,
   });
 
@@ -142,11 +150,17 @@ class _DataFormCheckboxState extends State<DataFormCheckbox> {
       ),
       child: InkWell(
         onTap: _onChange,
-        child: Container(
-          padding: EdgeInsets.symmetric(
-            horizontal: widget.background ? 12 : 0,
-            vertical: 8,
-          ),
+        customBorder: widget.splashRadius != null
+            ? RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              )
+            : null,
+        child: Ink(
+          padding: widget.contentPadding ??
+              EdgeInsets.symmetric(
+                horizontal: widget.background ? 12 : 0,
+                vertical: 8,
+              ),
           decoration: widget.decoration,
           child: Row(
             children: [
