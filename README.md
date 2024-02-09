@@ -89,12 +89,12 @@ Scaffold(
             id: 'password',
           ),
           const SizedBox(height: 20),
-          const DataformCheckbox(
+          const DataFormCheckbox(
             id: 'admin',
             text: 'Admin',
           ),
           const SizedBox(height: 20),
-          const DataformSwitch(
+          const DataFormSwitch(
             id: 'remember',
             active: true,
             text: 'Remember',
@@ -155,5 +155,5 @@ Add the following line to `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  dataform: ^1.0.0
+  dataform: ^1.0.3
 ```

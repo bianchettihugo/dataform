@@ -81,12 +81,12 @@ class UserForm extends StatelessWidget {
                 id: 'password',
               ),
               const SizedBox(height: 20),
-              const DataformCheckbox(
+              const DataFormCheckbox(
                 id: 'admin',
                 text: 'Admin',
               ),
               const SizedBox(height: 20),
-              const DataformSwitch(
+              const DataFormSwitch(
                 id: 'remember',
                 active: true,
                 text: 'Remember',

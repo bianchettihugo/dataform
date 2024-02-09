@@ -1,7 +1,7 @@
 import 'package:dataform/src/form/dataform_widget.dart';
 import 'package:flutter/material.dart';
 
-/// Specifies the position of the switch in the [DataformSwitch] widget
+/// Specifies the position of the switch in the [DataFormSwitch] widget
 enum SwitchPosition {
   /// The switch is on the left side of the content
   left,
@@ -14,7 +14,7 @@ enum SwitchPosition {
 ///
 /// Can be used inside a [DataForm] widget and have an id to save the value
 /// on a data map
-class DataformSwitch extends StatefulWidget {
+class DataFormSwitch extends StatefulWidget {
   /// The text to display
   final String text;
 
@@ -72,7 +72,7 @@ class DataformSwitch extends StatefulWidget {
   final SwitchPosition switchPosition;
 
   /// Creates a new switch option
-  const DataformSwitch({
+  const DataFormSwitch({
     required this.text,
     this.description,
     this.style,
@@ -95,10 +95,10 @@ class DataformSwitch extends StatefulWidget {
   });
 
   @override
-  State<DataformSwitch> createState() => _DataformSwitchState();
+  State<DataFormSwitch> createState() => _DataFormSwitchState();
 }
 
-class _DataformSwitchState extends State<DataformSwitch> {
+class _DataFormSwitchState extends State<DataFormSwitch> {
   late bool active;
 
   @override
@@ -153,7 +153,6 @@ class _DataformSwitchState extends State<DataformSwitch> {
   Widget build(BuildContext context) {
     return Theme(
       data: Theme.of(context).copyWith(
-        useMaterial3: widget.useMaterial3,
         colorScheme: widget.colorScheme,
       ),
       child: InkWell(

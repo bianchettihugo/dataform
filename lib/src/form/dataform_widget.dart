@@ -44,11 +44,41 @@ class DataForm extends StatefulWidget {
 class DataFormState extends State<DataForm> {
   final _formKey = GlobalKey<FormState>();
   late Map<String, dynamic> _data;
+  late List<String>? _validationFieldsId;
 
   @override
   void initState() {
     super.initState();
     _data = widget.data ?? {};
+  }
+
+  /// Check if the field with the given id should be validated.
+  /// If the [id] is not in the list of fields to be validated, it will
+  /// return false. But if the list is null, it will return true.
+  ///
+  /// This method is used internally by the form fields to check if they
+  /// should be validated or not when [validateFields] method is called.
+  bool checkFieldId(String id) {
+    return _validationFieldsId?.contains(id) ?? true;
+  }
+
+  /// Call this method to validate specific fields in the form by their ids.
+  /// The [ids] is a list of strings that represents the ids of the fields
+  /// that should be validated.
+  ///
+  /// This is very useful when you want to build a form with multiple steps
+  /// and you want to validate only the fields of the current step.
+  ///
+  /// Returns a Map with the fields ids and values if all the fields are valid,
+  /// otherwise returns null.
+  Map<String, dynamic>? validateFields(List<String> ids) {
+    _validationFieldsId = ids;
+    if (_formKey.currentState?.validate() ?? false) {
+      _formKey.currentState?.save();
+      return _data;
+    }
+
+    return null;
   }
 
   /// Call this method to get the form data as a [Map<String, dynamic>] if
@@ -61,6 +91,7 @@ class DataFormState extends State<DataForm> {
   /// validate all the fields and if any of them is invalid, this
   /// method will return null.
   Map<String, dynamic>? fetchData() {
+    _validationFieldsId = null;
     if (widget.resetData) _data.clear();
     if (_formKey.currentState?.validate() ?? false) {
       _formKey.currentState?.save();
